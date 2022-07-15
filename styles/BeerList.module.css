@@ -1,0 +1,43 @@
+.beerList {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem a {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--primary-light);
+  font-size: 1.3rem;
+  font-family: 'Anton', sans-serif;
+  font-weight: 500;
+}
+
+.listItem a:hover {
+  filter: brightness(1.4);
+}
+
+.image {
+  width: 50px;
+  margin: auto 0;
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+.btn {
+  -webkit-appearance: none;
+  padding: 0.5rem;
+  background: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid var(--white);
+}
+
+.btn:hover,
+.btn:active {
+  background: var(--black);
+  color: var(--white);
+}

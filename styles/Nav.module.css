@@ -1,0 +1,17 @@
+.navList {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 0;
+  list-style: none;
+  background-color: var(--primary);
+}
+
+.navList li {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navList li:hover {
+  text-decoration: underline;
+}
