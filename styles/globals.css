@@ -71,13 +71,20 @@ nav {
   font-family: 'Anton', sans-serif;
 }
 
+input[type='text'],
+select {
+  -webkit-appearance: none;
+  color: var(--black);
+  font-family: inherit;
+}
+
 input[type='text'] {
   padding: 1rem;
   margin: 2rem 0;
 }
 
 select {
-  padding: 1rem 0;
+  padding: 1rem 0.3rem;
   margin: 2rem 0;
   min-width: 150px;
 }
