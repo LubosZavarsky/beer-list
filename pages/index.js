@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { motion } from 'framer-motion';
 import useSWR from 'swr';
+import usePairings from '../hooks/usePairings';
 
 import { getRandomBeers } from '../lib/getRandomBeers';
 import { spring } from '../lib/anim';
@@ -22,35 +23,11 @@ export default function Home() {
 
   // food pairing
   const [query, setQuery] = useState('');
-  const [pairings, setPairings] = useState(['empty']);
+  const { pairings } = usePairings(query);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
-    fetchPairings(e.target.value);
   };
-
-  const fetchPairings = async (query) => {
-    try {
-      if (query) {
-        const req = await fetch(
-          `https://api.punkapi.com/v2/beers?food=${query}`
-        );
-        const data = await req.json();
-
-        data.statusCode && data.statusCode !== 200 && console.log('😭');
-
-        setPairings(data);
-      } else {
-        setPairings(['empty']);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchPairings();
-  }, [query]);
 
   return (
     <>

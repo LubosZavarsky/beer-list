@@ -3,6 +3,7 @@ import { getAllBeers } from '../../lib/getAllBeers';
 import { motion } from 'framer-motion';
 import { DebounceInput } from 'react-debounce-input';
 import { spring } from '../../lib/anim';
+import useFiltered from '../../hooks/useFiltered';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,26 +20,14 @@ const BeerList = ({ beers }) => {
   const [nameQuery, setNameQuery] = useState('');
   const [abvQuery, setAbvQuery] = useState(INITIAL_QUERY);
   const [ibuQuery, setIbuQuery] = useState(INITIAL_QUERY);
-  const [filtered, setFiltered] = useState([]);
 
-  useEffect(() => {
-    const beerFilter = () => {
-      let result = beers.filter((beer) =>
-        beer.name.toLowerCase().includes(nameQuery.toLowerCase())
-      );
-
-      if (abvQuery !== INITIAL_QUERY) {
-        result = result.filter((beer) => beer.abv === abvQuery);
-      }
-
-      if (ibuQuery !== INITIAL_QUERY) {
-        result = result.filter((beer) => beer.ibu === ibuQuery);
-      }
-
-      return result;
-    };
-    setFiltered(beerFilter);
-  }, [beers, nameQuery, abvQuery, ibuQuery]);
+  const { filtered } = useFiltered(
+    beers,
+    nameQuery,
+    abvQuery,
+    ibuQuery,
+    INITIAL_QUERY
+  );
 
   //get and sort abv
   const getAbv = filtered.map((item) => item.abv);
