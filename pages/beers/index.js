@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import { MdArrowForwardIos } from 'react-icons/md';
+import { AiOutlineSearch } from 'react-icons/ai';
 import * as styles from '../../styles/BeerList.module.css';
 
 const BEERS_SHOWN = 10;
@@ -53,13 +54,16 @@ const BeerList = ({ beers }) => {
       </Head>
       <section>
         <h2>Search beers</h2>
-        <DebounceInput
-          minLength={1}
-          debounceTimeout={500}
-          onChange={(e) => setNameQuery(e.target.value)}
-          placeholder="Search beers"
-          value={nameQuery}
-        />
+        <div className={styles.search}>
+          <AiOutlineSearch size={20} />
+          <DebounceInput
+            minLength={1}
+            debounceTimeout={500}
+            onChange={(e) => setNameQuery(e.target.value)}
+            placeholder="Search beers"
+            value={nameQuery}
+          />
+        </div>
 
         <h2>Filter by ABV %</h2>
 

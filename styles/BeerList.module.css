@@ -41,3 +41,28 @@
   background: var(--black);
   color: var(--white);
 }
+
+.search {
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  margin: 2rem 0;
+  max-width: 15rem;
+}
+
+.search:focus-within {
+  outline: solid var(--primary);
+}
+
+.search input {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 0.5rem;
+}
+
+.search input:focus {
+  outline: none;
+}
